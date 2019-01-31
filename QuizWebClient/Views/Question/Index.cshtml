@@ -1,0 +1,56 @@
+﻿@model Question
+@using QuizWebClient.WebQuizMasterService
+@{
+    ViewBag.Title = @Model.Header;
+    var _quizId = ViewContext.RouteData.Values["quizId"];
+    var _contestantId = ViewContext.RouteData.Values["contestantId"];
+}
+
+
+<div class="row">
+    <div class="col-lg-8">
+        <h2>@Model.Header</h2>
+    </div>
+
+    <div class="col-lg-4 text-right">
+        <!-- Creates a time icon with countdown --> 
+        <h3><i class="glyphicon glyphicon-time"></i> <span id="Count">30</span></h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3>@Model.Text</h3>
+    </div>
+    <div class="col-lg-12 question-list">
+        <div class="list-group">
+            @foreach (var item in Model.Answers)
+            {
+                <a href="@Url.Action("answer", "Question", new { contestantId = _contestantId, quizId = _quizId, questionId = Model.Id, answerId = item.Id })" class="list-group-item">
+                    @item.Text
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Script for the time icon and counter --> 
+@section scripts{
+    <script type="text/javascript">
+
+    window.onload = function () {
+        (function () {
+            var counter = 30;
+            setInterval(function () {
+                counter--;
+                if (counter >= 0)
+                {
+                   span = document.getElementById("Count");
+                    span.innerHTML = counter;
+                }
+            }, 1000);
+        })();
+    }
+    </script>
+}
+  

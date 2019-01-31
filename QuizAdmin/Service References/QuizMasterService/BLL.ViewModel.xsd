@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BLL.ViewModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BLL.ViewModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfQuestionViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QuestionViewModel" nillable="true" type="tns:QuestionViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuestionViewModel" nillable="true" type="tns:ArrayOfQuestionViewModel" />
+  <xs:complexType name="QuestionViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Header" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionId" type="xs:int" />
+      <xs:element minOccurs="0" name="State" type="tns:State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QuestionViewModel" nillable="true" type="tns:QuestionViewModel" />
+  <xs:simpleType name="State">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPEN" />
+      <xs:enumeration value="LOCKED" />
+      <xs:enumeration value="PENDING" />
+      <xs:enumeration value="CORRECT" />
+      <xs:enumeration value="WRONG" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="State" nillable="true" type="tns:State" />
+</xs:schema>

@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9C1EA603-2E02-4517-9DEF-4F56D1CFA765}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuizAdmin</RootNamespace>
+    <AssemblyName>QuizAdmin</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OldUserControls\CreateAnswer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\CreateAnswer.Designer.cs">
+      <DependentUpon>CreateAnswer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\CreateQuestion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\CreateQuestion.Designer.cs">
+      <DependentUpon>CreateQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\CreateUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IRepository.cs" />
+    <Compile Include="OldUserControls\QuestionListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\QuestionListView.Designer.cs">
+      <DependentUpon>QuestionListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\QuizListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\QuizListView.Designer.cs">
+      <DependentUpon>QuizListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\Login.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\QuizLobby.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\QuizLobby.Designer.cs">
+      <DependentUpon>QuizLobby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuizMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuizMaster.Designer.cs">
+      <DependentUpon>QuizMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\QuizQuestionView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\QuizQuestionView.Designer.cs">
+      <DependentUpon>QuizQuestionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\QuizRunning.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\QuizRunning.Designer.cs">
+      <DependentUpon>QuizRunning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OldUserControls\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OldUserControls\QuizDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\QuizDetails.Designer.cs">
+      <DependentUpon>QuizDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\QuizMasterService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AnswerCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AnswerCreate.Designer.cs">
+      <DependentUpon>AnswerCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuestionCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuestionCreate.Designer.cs">
+      <DependentUpon>QuestionCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuestionList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuestionList.Designer.cs">
+      <DependentUpon>QuestionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuestionsDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuestionsDetails.Designer.cs">
+      <DependentUpon>QuestionsDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuizCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuizCreate.Designer.cs">
+      <DependentUpon>QuizCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuizInstanceDetail2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuizInstanceDetail2.Designer.cs">
+      <DependentUpon>QuizInstanceDetail2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuizInstanceDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuizInstanceDetail.Designer.cs">
+      <DependentUpon>QuizInstanceDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuizDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuizDetail.Designer.cs">
+      <DependentUpon>QuizDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuizInstanceList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuizInstanceList.Designer.cs">
+      <DependentUpon>QuizInstanceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuizList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\QuizList.Designer.cs">
+      <DependentUpon>QuizList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatisticTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StatisticTable.Designer.cs">
+      <DependentUpon>StatisticTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserCreate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserCreate.Designer.cs">
+      <DependentUpon>UserCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserLogin.Designer.cs">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Utilities.cs" />
+    <Compile Include="UserViews\QuestionView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserViews\QuestionView.Designer.cs">
+      <DependentUpon>QuestionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\QuizQuestionView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserViews\QuizQuestionView.Designer.cs">
+      <DependentUpon>QuizQuestionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\QuizRunningView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserViews\QuizRunningView.Designer.cs">
+      <DependentUpon>QuizRunningView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\QuizStatisticsListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserViews\QuizStatisticsListView.Designer.cs">
+      <DependentUpon>QuizStatisticsListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\QuizStatisticsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserViews\QuizStatisticsView.Designer.cs">
+      <DependentUpon>QuizStatisticsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\QuizView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserViews\QuizView.Designer.cs">
+      <DependentUpon>QuizView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\UserView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserViews\UserView.Designer.cs">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="OldUserControls\CreateAnswer.resx">
+      <DependentUpon>CreateAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\CreateQuestion.resx">
+      <DependentUpon>CreateQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="OldUserControls\TestFormv2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OldUserControls\TestFormv2.Designer.cs">
+      <DependentUpon>TestFormv2.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="OldUserControls\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="OldUserControls\QuizDetails.resx">
+      <DependentUpon>QuizDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\QuestionListView.resx">
+      <DependentUpon>QuestionListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\QuizListView.resx">
+      <DependentUpon>QuizListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\QuizLobby.resx">
+      <DependentUpon>QuizLobby.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuizMaster.resx">
+      <DependentUpon>QuizMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\QuizQuestionView.resx">
+      <DependentUpon>QuizQuestionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\QuizRunning.resx">
+      <DependentUpon>QuizRunning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OldUserControls\TestFormv2.resx">
+      <DependentUpon>TestFormv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\AnswerCreate.resx">
+      <DependentUpon>AnswerCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuestionCreate.resx">
+      <DependentUpon>QuestionCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuestionList.resx">
+      <DependentUpon>QuestionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuestionsDetails.resx">
+      <DependentUpon>QuestionsDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuizCreate.resx">
+      <DependentUpon>QuizCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuizInstanceDetail2.resx">
+      <DependentUpon>QuizInstanceDetail2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuizInstanceDetail.resx">
+      <DependentUpon>QuizInstanceDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuizDetail.resx">
+      <DependentUpon>QuizDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuizInstanceList.resx">
+      <DependentUpon>QuizInstanceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\QuizList.resx">
+      <DependentUpon>QuizList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StatisticTable.resx">
+      <DependentUpon>StatisticTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserCreate.resx">
+      <DependentUpon>UserCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserLogin.resx">
+      <DependentUpon>UserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserViews\QuestionView.resx">
+      <DependentUpon>QuestionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserViews\QuizQuestionView.resx">
+      <DependentUpon>QuizQuestionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserViews\QuizRunningView.resx">
+      <DependentUpon>QuizRunningView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserViews\QuizStatisticsListView.resx">
+      <DependentUpon>QuizStatisticsListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserViews\QuizStatisticsView.resx">
+      <DependentUpon>QuizStatisticsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserViews\QuizView.resx">
+      <DependentUpon>QuizView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserViews\UserView.resx">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\QuizMasterService\BLL.Model.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\QuizMasterService\BLL.ViewModel.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\QuizMasterService\QuizAdmin.QuizMasterService.Contestant.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\QuizMasterService\QuizAdmin.QuizMasterService.Question.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\QuizMasterService\QuizAdmin.QuizMasterService.QuestionViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\QuizMasterService\QuizAdmin.QuizMasterService.Quiz.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\QuizMasterService\QuizAdmin.QuizMasterService.QuizInstance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\QuizMasterService\QuizAdmin.QuizMasterService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\QuizMasterService\service.wsdl" />
+    <None Include="Service References\QuizMasterService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\QuizMasterService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\QuizMasterService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\QuizMasterService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\QuizMasterService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\QuizMasterService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

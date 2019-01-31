@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="QuizMasterService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IQuizMasterService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/BLL.Model" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/BLL.ViewModel" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IQuizMasterService_CreateQuiz_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateQuiz" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_CreateQuiz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateQuizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetQuizes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizes" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetQuizes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_InsertUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUser" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_InsertUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_CreateQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_CreateQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_SaveQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_SaveQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetQuestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestions" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetQuestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_OpenQuiz_InputMessage">
+    <wsdl:part name="parameters" element="tns:OpenQuiz" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_OpenQuiz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OpenQuizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_CloseQuiz_InputMessage">
+    <wsdl:part name="parameters" element="tns:CloseQuiz" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_CloseQuiz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CloseQuizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_RunQuiz_InputMessage">
+    <wsdl:part name="parameters" element="tns:RunQuiz" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_RunQuiz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RunQuizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetQuizRunningById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizRunningById" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetQuizRunningById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizRunningByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_AddQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_AddQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_RemoveQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_RemoveQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetAllByQuizId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllByQuizId" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetAllByQuizId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllByQuizIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetActiveQuizByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveQuizByUserId" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_GetActiveQuizByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActiveQuizByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_DeleteQuiz_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQuiz" />
+  </wsdl:message>
+  <wsdl:message name="IQuizMasterService_DeleteQuiz_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQuizResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuestionView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionView" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuestionView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_InsertContestant_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertContestant" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_InsertContestant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertContestantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuizByUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizByUserID" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuizByUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetUserIdByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdByName" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetUserIdByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIdByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuestionToAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionToAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuestionToAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionToAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_AttemptAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttemptAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_AttemptAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttemptAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuizRunningByQuizId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizRunningByQuizId" />
+  </wsdl:message>
+  <wsdl:message name="IWebQuizMasterService_GetQuizRunningByQuizId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuizRunningByQuizIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IQuizMasterService">
+    <wsdl:operation name="CreateQuiz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/CreateQuiz" message="tns:IQuizMasterService_CreateQuiz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/CreateQuizResponse" message="tns:IQuizMasterService_CreateQuiz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/Login" message="tns:IQuizMasterService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/LoginResponse" message="tns:IQuizMasterService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/GetQuizes" message="tns:IQuizMasterService_GetQuizes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/GetQuizesResponse" message="tns:IQuizMasterService_GetQuizes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/InsertUser" message="tns:IQuizMasterService_InsertUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/InsertUserResponse" message="tns:IQuizMasterService_InsertUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/CreateQuestion" message="tns:IQuizMasterService_CreateQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/CreateQuestionResponse" message="tns:IQuizMasterService_CreateQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/SaveQuestion" message="tns:IQuizMasterService_SaveQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/SaveQuestionResponse" message="tns:IQuizMasterService_SaveQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/GetQuestions" message="tns:IQuizMasterService_GetQuestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/GetQuestionsResponse" message="tns:IQuizMasterService_GetQuestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenQuiz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/OpenQuiz" message="tns:IQuizMasterService_OpenQuiz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/OpenQuizResponse" message="tns:IQuizMasterService_OpenQuiz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseQuiz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/CloseQuiz" message="tns:IQuizMasterService_CloseQuiz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/CloseQuizResponse" message="tns:IQuizMasterService_CloseQuiz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RunQuiz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/RunQuiz" message="tns:IQuizMasterService_RunQuiz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/RunQuizResponse" message="tns:IQuizMasterService_RunQuiz_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizRunningById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/GetQuizRunningById" message="tns:IQuizMasterService_GetQuizRunningById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/GetQuizRunningByIdResponse" message="tns:IQuizMasterService_GetQuizRunningById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/AddQuestion" message="tns:IQuizMasterService_AddQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/AddQuestionResponse" message="tns:IQuizMasterService_AddQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/RemoveQuestion" message="tns:IQuizMasterService_RemoveQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/RemoveQuestionResponse" message="tns:IQuizMasterService_RemoveQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllByQuizId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/GetAllByQuizId" message="tns:IQuizMasterService_GetAllByQuizId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/GetAllByQuizIdResponse" message="tns:IQuizMasterService_GetAllByQuizId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveQuizByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/GetActiveQuizByUserId" message="tns:IQuizMasterService_GetActiveQuizByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/GetActiveQuizByUserIdResponse" message="tns:IQuizMasterService_GetActiveQuizByUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuiz">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuizMasterService/DeleteQuiz" message="tns:IQuizMasterService_DeleteQuiz_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuizMasterService/DeleteQuizResponse" message="tns:IQuizMasterService_DeleteQuiz_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IWebQuizMasterService">
+    <wsdl:operation name="GetQuestionView">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuestionView" message="tns:IWebQuizMasterService_GetQuestionView_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuestionViewResponse" message="tns:IWebQuizMasterService_GetQuestionView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertContestant">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebQuizMasterService/InsertContestant" message="tns:IWebQuizMasterService_InsertContestant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebQuizMasterService/InsertContestantResponse" message="tns:IWebQuizMasterService_InsertContestant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizByUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuizByUserID" message="tns:IWebQuizMasterService_GetQuizByUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuizByUserIDResponse" message="tns:IWebQuizMasterService_GetQuizByUserID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetUserIdByName" message="tns:IWebQuizMasterService_GetUserIdByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetUserIdByNameResponse" message="tns:IWebQuizMasterService_GetUserIdByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionToAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuestionToAnswer" message="tns:IWebQuizMasterService_GetQuestionToAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuestionToAnswerResponse" message="tns:IWebQuizMasterService_GetQuestionToAnswer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttemptAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebQuizMasterService/AttemptAnswer" message="tns:IWebQuizMasterService_AttemptAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebQuizMasterService/AttemptAnswerResponse" message="tns:IWebQuizMasterService_AttemptAnswer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizRunningByQuizId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuizRunningByQuizId" message="tns:IWebQuizMasterService_GetQuizRunningByQuizId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWebQuizMasterService/GetQuizRunningByQuizIdResponse" message="tns:IWebQuizMasterService_GetQuizRunningByQuizId_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IQuizMasterService" type="tns:IQuizMasterService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IQuizMasterService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateQuiz">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/CreateQuiz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizes">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/GetQuizes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUser">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/InsertUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/CreateQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/SaveQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestions">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/GetQuestions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenQuiz">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/OpenQuiz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseQuiz">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/CloseQuiz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RunQuiz">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/RunQuiz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizRunningById">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/GetQuizRunningById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/AddQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/RemoveQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllByQuizId">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/GetAllByQuizId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveQuizByUserId">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/GetActiveQuizByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuiz">
+      <soap12:operation soapAction="http://tempuri.org/IQuizMasterService/DeleteQuiz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IWebQuizMasterService" type="tns:IWebQuizMasterService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetQuestionView">
+      <soap:operation soapAction="http://tempuri.org/IWebQuizMasterService/GetQuestionView" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertContestant">
+      <soap:operation soapAction="http://tempuri.org/IWebQuizMasterService/InsertContestant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizByUserID">
+      <soap:operation soapAction="http://tempuri.org/IWebQuizMasterService/GetQuizByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserIdByName">
+      <soap:operation soapAction="http://tempuri.org/IWebQuizMasterService/GetUserIdByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionToAnswer">
+      <soap:operation soapAction="http://tempuri.org/IWebQuizMasterService/GetQuestionToAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttemptAnswer">
+      <soap:operation soapAction="http://tempuri.org/IWebQuizMasterService/AttemptAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizRunningByQuizId">
+      <soap:operation soapAction="http://tempuri.org/IWebQuizMasterService/GetQuizRunningByQuizId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QuizMasterService">
+    <wsdl:port name="NetTcpBinding_IQuizMasterService" binding="tns:NetTcpBinding_IQuizMasterService">
+      <soap12:address location="net.tcp://localhost:8732/QuizService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8732/QuizService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>JESPER-PC\Jesper</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IWebQuizMasterService" binding="tns:BasicHttpBinding_IWebQuizMasterService">
+      <soap:address location="http://localhost:8733/QuizService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,14 @@
+﻿@model bool?
+
+
+
+@if (Model.HasValue && Model.Value)
+{
+    <p>Quizzen er startet</p>
+    <!--fancy button, linked to Index view inside Quiz Controller-->
+    @Html.RouteLink("Begynd", "PartialRoute", null, new { @class = "btn btn-primary btn-success btn-lg" });
+}
+else
+{
+    <p>Gør dig klar, quizzen starter lige om lidt…</p>
+}

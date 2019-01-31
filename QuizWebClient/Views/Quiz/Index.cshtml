@@ -1,0 +1,89 @@
+﻿@model IEnumerable<QuestionViewModel>
+@using QuizWebClient.WebQuizMasterService
+@{
+    ViewBag.Title = "Quizzen";
+    var _quizId = ViewContext.RouteData.Values["quizId"];
+    var _contestantId = ViewContext.RouteData.Values["contestantId"];
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Quizzen</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3>LISTE AF SPØRGSMÅL</h3>
+    </div>
+</div>
+
+<div class="row">
+    <!-- TempData creates an output variable that confirms if answer i correct or false  -->
+    <div class="col-lg-12">
+        @if (TempData["output"] != null)
+        {
+            if ((bool)TempData["output"])
+            {
+                <div class="alert alert-success">
+                    Du svarede rigtigt
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    Du svarede forkert
+                </div>
+            }
+        }
+    </div>
+    <div class="col-lg-12 question-list">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 question-item">
+                <!--if Question is clickable OPEN or PENDING. Add button with question ID and quiz + contestant-->
+                @if (item.State == State.OPEN || item.State == State.PENDING)
+                {
+                    <a href="@Url.Action("Index", "Question", new { contestantId = _contestantId, quizId = _quizId, questionId = item.QuestionId })" class="btn btn-block @item.State">
+                        @if (item.State == State.OPEN)
+                        {
+                            <i class="glyphicon glyphicon-question-sign pull-left highlight">
+                            </i>
+                        }
+                        else
+                        {
+                            <i class="glyphicon glyphicon-dashboard pull-left">
+                            </i>
+                        }
+                        @item.Header
+                    </a>
+                }
+                else
+                {
+                    <div class="btn btn-block  disabled @item.State">
+                        @if (item.State == State.CORRECT)
+                        {
+                            <i class="glyphicon glyphicon-ok-circle pull-left">
+                            </i>
+                        }
+
+                        @if (item.State == State.WRONG)
+                        {
+                            <i class="glyphicon glyphicon-remove-circle pull-left">
+                            </i>
+                        }
+
+                        @if (item.State == State.LOCKED)
+                        {
+                            <i class="glyphicon glyphicon-ban-circle pull-left">
+
+                            </i>
+                        }
+                        @item.Header
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
